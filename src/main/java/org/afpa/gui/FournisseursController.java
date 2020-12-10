@@ -33,57 +33,10 @@ public class FournisseursController implements Initializable {
 
     public void handleButtonAjouter(ActionEvent actionEvent) {
         int num = 0;
-        /*try {
-            Integer.parseInt(nomField.getText());
-            System.out.println("c'est un entier");
-            nomOK = false;
-        } catch (Exception e) {
-            System.out.println("C'est bien une chaine");
-            nomOK = true;
-        }
-        try {
-            Integer.parseInt(rueField.getText());
-            System.out.println("c'est un entier");
-            rueOK = false;
-        } catch (Exception e) {
-            System.out.println("C'est bien une chaine");
-            rueOK = true;
-        }
-        try {
-            Integer.parseInt(cpField.getText());
-            System.out.println("c'est un entier");
-            cpOK = true;
-            if (!(cpField.getText().length() == 5)) {
-                cpOK = false;
-            }
 
-        } catch (Exception e) {
-            System.out.println("C'est bien une chaine");
 
-            cpOK = false;
-        }
-        if (!cpOK) {
-            cpField.setStyle("-fx-border-color : red");
-        }
-        if (!nomOK || nomField.getText().equals("")) {
-            nomField.setStyle("-fx-border-color : red");
-        }
-        if (!rueOK || rueField.getText().equals("")) {
-            rueField.setStyle("-fx-border-color : red");
-        }
-        if (contactField.getText().equals("")) {
-            contactField.setStyle("-fx-border-color : red");
-        } else {
-            contactOK = true;
-        }
-        if (villeField.getText().equals("")) {
-            villeField.setStyle("-fx-border-color : red");
-        } else {
-            villeOK = true;
-        }
 
-        fieldOK = nomOK && rueOK && cpOK && contactOK && villeOK;*/
-        //TODO modifier les vérifications
+        //TODO librairie de vérifications
         fieldOK = true;
         //passage à l'enregistrement si les valeurs sont bonnes
         if (fieldOK) {
