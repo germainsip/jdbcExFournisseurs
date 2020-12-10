@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+group 'org.afpa'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    compile 'mysql:mysql-connector-java:8.0.22'
+
+    compile 'org.kordamp.ikonli:ikonli-javafx:12.0.0'
+
+    compile 'org.kordamp.ikonli:ikonli-fontawesome-pack:12.0.0'
+
+    compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:12.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+javafx {
+    version = "15"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+mainClassName = "org.afpa.App"

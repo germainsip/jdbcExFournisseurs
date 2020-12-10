@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.CommandeController">
+    <children>
+      <VBox layoutX="80.0" layoutY="29.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Button fx:id="menuButton" mnemonicParsing="false" onAction="#handleButtonMenu" textFill="WHITE">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-arrow-left" iconSize="32" />
+                     </graphic>
+                  </Button>
+                    <Label styleClass="title" text="Liste des commandes">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                    </Label>
+                    <ComboBox fx:id="listeFouCombo" onAction="#handleBoxSelectionFournis" prefHeight="42.0" prefWidth="265.0" promptText="Choisissez un fournisseur" styleClass="button">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+              <TextArea fx:id="affichageArea" editable="false" style="-fx-: d38627;">
+                  <effect>
+                      <InnerShadow />
+                  </effect>
+              </TextArea>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+    </children>
+</AnchorPane>
