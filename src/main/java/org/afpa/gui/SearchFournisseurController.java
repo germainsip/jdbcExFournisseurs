@@ -6,7 +6,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.afpa.App;
 
 import java.io.IOException;
 import java.sql.*;
@@ -29,9 +28,10 @@ public class SearchFournisseurController {
     }
 
     public void searchMethode(ActionEvent actionEvent) {
+
         String dest = "jdbc:mysql://localhost:3306/papyrus";
         try {
-            Connection con = DriverManager.getConnection(dest, "root", "Gm1");
+            Connection con = DriverManager.getConnection(dest, "root", "Grm1");
             PreparedStatement stm = con.prepareStatement("SELECT * FROM fournis where numfou = ?");
             stm.setString(1,numField.getText());
 
@@ -39,12 +39,19 @@ public class SearchFournisseurController {
 
             if (resultSet.next()){
                 nomField.setText(resultSet.getString("nomfou"));
-                rueField.setText(resultSet.getString("RUEFOU"));
+                rueField.setText(resultSet.getString("ruefou"));
                 cpField.setText(resultSet.getString("posfou"));
                 villeField.setText(resultSet.getString("vilfou"));
                 contactField.setText(resultSet.getString("confou"));
                 avertissement.setText("");
-            } else avertissement.setText("pas de résultat");
+            } else {
+                nomField.clear();
+                rueField.clear();
+                cpField.clear();
+                villeField.clear();
+                contactField.clear();
+                avertissement.setText("pas de résultat");
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             Alert alert = new Alert(AlertType.WARNING);

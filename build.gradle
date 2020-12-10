@@ -14,14 +14,12 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
-    compile 'mysql:mysql-connector-java:8.0.22'
-
+//  ajout pour de belles icones
     compile 'org.kordamp.ikonli:ikonli-javafx:12.0.0'
-
     compile 'org.kordamp.ikonli:ikonli-fontawesome-pack:12.0.0'
-
     compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:12.0.0'
+//    pilote jdbc
+    compile 'org.mariadb.jdbc:mariadb-java-client:2.7.1'
 }
 
 test {

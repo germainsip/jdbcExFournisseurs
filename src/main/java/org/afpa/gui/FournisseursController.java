@@ -21,6 +21,8 @@ public class FournisseursController implements Initializable {
     public TextField cpField;
     public TextField villeField;
     public TextField contactField;
+    public Button ajouter;
+    public Button annuler;
 
     boolean nomOK = false, rueOK = false, cpOK = false, villeOK = false, contactOK = false;
     boolean fieldOK;

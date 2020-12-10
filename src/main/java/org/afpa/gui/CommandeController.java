@@ -22,6 +22,7 @@ public class CommandeController implements Initializable {
     public TextArea affichageArea;
     public ComboBox listeFouCombo;
     public Button boutonMenu;
+    public Button menuButton;
 
     ObservableList<String> listFournis = FXCollections.observableArrayList("Tous");
 
