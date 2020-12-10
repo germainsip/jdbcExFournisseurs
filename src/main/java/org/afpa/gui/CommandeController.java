@@ -12,6 +12,8 @@ import javafx.scene.control.TextArea;
 import org.afpa.App;
 import org.afpa.DAL.Commande;
 import org.afpa.DAL.CommandeDAO;
+import org.afpa.DAL.Fournisseur;
+import org.afpa.DAL.FournisseurDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,82 +25,57 @@ import static org.afpa.App.changeFxml;
 
 public class CommandeController implements Initializable {
     public TextArea affichageArea;
-    public ComboBox listeFouCombo;
+    public ComboBox<Fournisseur> listeFouCombo;
     public Button boutonMenu;
     public Button menuButton;
 
-    ObservableList<String> listFournis = FXCollections.observableArrayList("Tous");
+    ObservableList listFournis = FXCollections.observableArrayList("Tous");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            String dest = "jdbc:mysql://localhost:3306/papyrus";
-            Connection con = DriverManager.getConnection(dest, "root", "Grm1");
-            PreparedStatement stm = con.prepareStatement("SELECT nomfou FROM fournis");
-
-            ResultSet result = stm.executeQuery();
-            while (result.next()) {
-                listFournis.add(result.getString("nomfou"));
-
-            }
-
-            stm.close();
-            con.close();
-        } catch (Exception e) {
-            System.out.println("error");
-            System.out.println(e.getMessage());
-            Alert.AlertType alertAlertType;
+            FournisseurDAO fournisseurDAO = new FournisseurDAO();
+            listFournis.addAll(fournisseurDAO.ListAll());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
             Alert alert = new Alert(AlertType.WARNING);
             alert.setContentText("La base de donnée n'est pas joignable.");
-
         }
+
         listeFouCombo.setItems(listFournis);
     }
 
     public void handleBoxSelectionFournis(ActionEvent actionEvent) {
         String dest = "jdbc:mysql://localhost:3306/papyrus";
-        String nom = (String) listeFouCombo.getValue();
-        int num=0;
-        String tmp ="";
-        if (nom.equals("Tous")){
+        String nom = String.valueOf(listeFouCombo.getValue());
+        String tmp = "";
+        if (nom.equals("Tous")) {
 
             try {
                 CommandeDAO commandeDAO = new CommandeDAO();
                 List<Commande> listCommandes = commandeDAO.ListAll();
                 for (Commande commande : listCommandes) {
                     tmp += commande.toString() + "\n";
-                    System.out.println( );
+                    System.out.println();
                 }
                 affichageArea.setText(tmp);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-        }else{
+        } else {
             try {
-
-                Connection con = DriverManager.getConnection(dest, "root", "Grm1");
-                PreparedStatement stm1 = con.prepareStatement("SELECT numfou,nomfou FROM fournis where nomfou = ?");
-                PreparedStatement stm2 = con.prepareStatement("SELECT*  FROM entcom WHERE numfou = ?");
-
-                stm1.setString(1, nom);
-                ResultSet result1 = stm1.executeQuery();
-                while (result1.next()){
-                    num = result1.getInt("numfou");}
-
-                stm2.setInt(1, num);
-                ResultSet result2 = stm2.executeQuery();
-                while (result2.next()) {
-                    tmp += result2.getString("numcom")+"| "+result2.getString("datcom")+"| "+result2.getString("obscom")+"\n";
-
-
+                CommandeDAO commandeDAO = new CommandeDAO();
+                List<Commande> listCommandes = commandeDAO.listCommandeByFournisseur(listeFouCombo.getSelectionModel().getSelectedItem().getNumfou());
+                for (Commande commande : listCommandes) {
+                    tmp += commande.toString() + "\n";
+                    System.out.println();
                 }
                 affichageArea.setText(tmp);
-                stm1.close();
-                stm2.close();
-                con.close();
             } catch (Exception e) {
                 System.out.println("error");
-                System.out.println(e.getMessage());}}
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public void handleButtonMenu(ActionEvent actionEvent) throws IOException {

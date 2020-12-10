@@ -16,7 +16,6 @@ public class CommandeDAO {
         List<Commande> listeCommande = new ArrayList();
 
 
-        //ResultSet res;
         try {
             Statement stm = papyrusDB.getCon().createStatement();
             ResultSet res = stm.executeQuery("SELECT * FROM entcom");
@@ -29,10 +28,28 @@ public class CommandeDAO {
             stm.close();
         } catch (SQLException ex) {
             Logger.getLogger(CommandeDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("c'est dans ClientDAO que ça se passe!!!");
+            System.out.println("c'est dans CommandeDAO que ça se passe!!!");
         }
 
 
+        return listeCommande;
+    }
+
+    public List<Commande> listCommandeByFournisseur(int numfou){
+        List<Commande> listeCommande = new ArrayList();
+        try {
+            PreparedStatement preparedStatement = papyrusDB.getCon().prepareStatement("SELECT*  FROM entcom WHERE numfou = ?");
+            preparedStatement.setInt(1, numfou);
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()) {
+                Commande c = new Commande(res.getInt("numcom"),res.getString("obscom"), res.getString("datcom"),res.getInt("numfou"));
+
+                listeCommande.add(c);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return listeCommande;
     }
 }
