@@ -42,7 +42,7 @@ public class FournisseursController implements Initializable {
         if (fieldOK) {
             try {
                 String dest = "jdbc:mysql://localhost:3306/papyrus";
-                Connection con = DriverManager.getConnection(dest, "root", "Grm1");
+                Connection con = DriverManager.getConnection(dest, "root", "");
                 PreparedStatement stm = con.prepareStatement("SELECT nomfou FROM fournis where nomfou = ?");
                 Statement stm1 = con.createStatement();
 
