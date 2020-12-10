@@ -30,7 +30,7 @@ public class CommandeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             String dest = "jdbc:mysql://localhost:3306/papyrus";
-            Connection con = DriverManager.getConnection(dest, "root", "Grm1");
+            Connection con = DriverManager.getConnection(dest, "root", "");
             PreparedStatement stm = con.prepareStatement("SELECT nomfou FROM fournis");
 
             ResultSet result = stm.executeQuery();
@@ -59,7 +59,7 @@ public class CommandeController implements Initializable {
         String tmp ="";
         if (nom.equals("Tous")){
             try{
-                Connection con = DriverManager.getConnection(dest,"root","Grm1");
+                Connection con = DriverManager.getConnection(dest,"root","");
                 Statement stm = con.createStatement();
                 ResultSet resultDef = stm.executeQuery("SELECT * FROM entcom");
 
@@ -75,7 +75,7 @@ public class CommandeController implements Initializable {
         }else{
             try {
 
-                Connection con = DriverManager.getConnection(dest, "root", "Grm1");
+                Connection con = DriverManager.getConnection(dest, "root", "");
                 PreparedStatement stm1 = con.prepareStatement("SELECT numfou,nomfou FROM fournis where nomfou = ?");
                 PreparedStatement stm2 = con.prepareStatement("SELECT*  FROM entcom WHERE numfou = ?");
 
