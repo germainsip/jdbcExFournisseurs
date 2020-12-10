@@ -10,10 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import org.afpa.App;
+import org.afpa.DAL.Commande;
+import org.afpa.DAL.CommandeDAO;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static org.afpa.App.changeFxml;
@@ -58,19 +61,17 @@ public class CommandeController implements Initializable {
         int num=0;
         String tmp ="";
         if (nom.equals("Tous")){
-            try{
-                Connection con = DriverManager.getConnection(dest,"root","Grm1");
-                Statement stm = con.createStatement();
-                ResultSet resultDef = stm.executeQuery("SELECT * FROM entcom");
 
-                while (resultDef.next()){
-                    tmp += resultDef.getString("numcom")+"| "+resultDef.getString("datcom")+"| "+resultDef.getString("obscom")+"\n";
-
+            try {
+                CommandeDAO commandeDAO = new CommandeDAO();
+                List<Commande> listCommandes = commandeDAO.ListAll();
+                for (Commande commande : listCommandes) {
+                    tmp += commande.toString() + "\n";
+                    System.out.println( );
                 }
                 affichageArea.setText(tmp);
-            }catch (Exception e){
-                System.out.println("error");
-                System.out.println(e.getMessage());
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         }else{
             try {
