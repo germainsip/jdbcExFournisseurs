@@ -30,30 +30,6 @@ public class Fournisseur {
     return numfou;
   }
 
-  public String getNomfou() {
-    return nomfou;
-  }
-
-  public String getRuefou() {
-    return ruefou;
-  }
-
-  public String getPosfou() {
-    return posfou;
-  }
-
-  public String getVilfou() {
-    return vilfou;
-  }
-
-  public String getConfou() {
-    return confou;
-  }
-
-  public int getSatisf() {
-    return satisf;
-  }
-
   @Override
   public String toString() {
     return nomfou;
