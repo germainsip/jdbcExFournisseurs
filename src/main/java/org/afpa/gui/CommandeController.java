@@ -26,7 +26,7 @@ public class CommandeController implements Initializable {
     public ComboBox<Fournisseur> listeFouCombo;
     public Button menuButton;
 
-    ObservableList<Fournisseur> listFournis = FXCollections.observableArrayList(new Fournisseur(0,"Tous"));
+    ObservableList<Fournisseur> listFournis = FXCollections.observableArrayList(new Fournisseur(0, "Tous"));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,6 +45,7 @@ public class CommandeController implements Initializable {
     public void handleButtonMenu() throws IOException {
         changeFxml("menu");
     }
+
     public void handleBoxSelectionFournis() {
         String nom = String.valueOf(listeFouCombo.getValue());
         StringBuilder tmp = new StringBuilder();
@@ -52,25 +53,16 @@ public class CommandeController implements Initializable {
 
             try {
                 CommandeDAO commandeDAO = new CommandeDAO();
-                List<Commande> listCommandes = commandeDAO.ListAll();
-                for (Commande commande : listCommandes) {
-                    tmp.append(commande.toString()).append("\n");
-                    System.out.println();
-                }
-                affichageArea.setText(tmp.toString());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                afficheListe(commandeDAO.ListAll());
+            } catch (Exception e) {
+                System.out.println("error");
+                System.out.println(e.getMessage());
             }
         } else {
             try {
                 CommandeDAO commandeDAO = new CommandeDAO();
-                List<Commande> listCommandes = commandeDAO
-                        .listCommandeByFournisseur(listeFouCombo.getSelectionModel().getSelectedItem().getNumfou());
-                for (Commande commande : listCommandes) {
-                    tmp.append(commande.toString()).append("\n");
-                    System.out.println();
-                }
-                affichageArea.setText(tmp.toString());
+                afficheListe(commandeDAO
+                        .listCommandeByFournisseur(listeFouCombo.getSelectionModel().getSelectedItem().getNumfou()));
             } catch (Exception e) {
                 System.out.println("error");
                 System.out.println(e.getMessage());
@@ -78,5 +70,13 @@ public class CommandeController implements Initializable {
         }
     }
 
+    private void afficheListe(List<Commande> list) {
+        StringBuilder tmp = new StringBuilder();
+        for (Commande commande : list) {
+            tmp.append(commande.toString()).append("\n");
+            System.out.println();
+        }
+        affichageArea.setText(tmp.toString());
+    }
 
 }
