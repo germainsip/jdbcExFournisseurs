@@ -48,7 +48,6 @@ public class CommandeController implements Initializable {
 
     public void handleBoxSelectionFournis() {
         String nom = String.valueOf(listeFouCombo.getValue());
-        StringBuilder tmp = new StringBuilder();
         if (nom.equals("Tous")) {
 
             try {
