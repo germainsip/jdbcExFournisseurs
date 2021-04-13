@@ -23,7 +23,7 @@ public class App extends Application {
      * @throws IOException
      */
     public static void changeFxml(String fxml) throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("/org/afpa/gui/" + fxml + ".fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("gui/" + fxml + ".fxml"));
         scene.setRoot(root);
         stage.hide();
         stage.show();
@@ -31,7 +31,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/afpa/gui/menu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("gui/menu.fxml"));
         scene = new Scene(root);
         stage = new Stage();
         stage.setResizable(false);
