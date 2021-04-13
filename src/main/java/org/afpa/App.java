@@ -17,17 +17,7 @@ public class App extends Application {
         launch(args);
     }
 
-    /**
-     * Méthode de changement de vue
-     * @param fxml nom du fxml sans extension
-     * @throws IOException
-     */
-    public static void changeFxml(String fxml) throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("gui/" + fxml + ".fxml"));
-        scene.setRoot(root);
-        stage.hide();
-        stage.show();
-    }
+
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -39,6 +29,17 @@ public class App extends Application {
         Image ico = new Image(String.valueOf(getClass().getResource("gui/img/logoPeter.png")));
         stage.getIcons().add(ico);
         stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Méthode de changement de vue
+     * @param fxml nom du fxml sans extension
+     */
+    public static void changeFxml(String fxml) throws IOException {
+        Parent root = FXMLLoader.load(App.class.getResource("gui/" + fxml + ".fxml"));
+        scene.setRoot(root);
+        stage.hide();
         stage.show();
     }
 }
