@@ -1,0 +1,18 @@
+.root{
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-color: #81cd65;
+
+
+}
+
+.title{
+    -fx-text-fill: #f46409;
+
+}
+
+.list-cell:hover, .list-cell:selected{
+    -fx-background-color: #81cd65;
+}

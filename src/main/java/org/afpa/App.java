@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,6 +36,8 @@ public class App extends Application {
         stage = new Stage();
         stage.setResizable(false);
         stage.setTitle("Exercices JDBC");
+        Image ico = new Image(String.valueOf(getClass().getResource("gui/img/logoPeter.png")));
+        stage.getIcons().add(ico);
         stage.setScene(scene);
         stage.show();
     }
