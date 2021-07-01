@@ -1,0 +1,20 @@
+org/afpa/DAL/Commande.java
+ org.afpa.DAL.Commande
+org/afpa/DAL/CommandeDAO.java
+ org.afpa.DAL.CommandeDAO
+org/afpa/gui/FournisseursController.java
+ org.afpa.gui.FournisseursController
+org/afpa/gui/MenuController.java
+ org.afpa.gui.MenuController
+org/afpa/DAL/PapyrusDB.java
+ org.afpa.DAL.PapyrusDB
+org/afpa/App.java
+ org.afpa.App
+org/afpa/gui/CommandeController.java
+ org.afpa.gui.CommandeController
+org/afpa/DAL/Fournisseur.java
+ org.afpa.DAL.Fournisseur
+org/afpa/gui/SearchFournisseurController.java
+ org.afpa.gui.SearchFournisseurController
+org/afpa/DAL/FournisseurDAO.java
+ org.afpa.DAL.FournisseurDAO
