@@ -7,7 +7,7 @@ import java.sql.SQLException;
 class PapyrusDB {
     private final String URL_PAPYRUS = "jdbc:mysql://localhost:3306/papyrus";
     private final String USR_PAPYRUS = "root";
-    private final String PWD_PAPYRUS = "Grm1";
+    private final String PWD_PAPYRUS = "tiger";
     public Connection con = null;
 
 

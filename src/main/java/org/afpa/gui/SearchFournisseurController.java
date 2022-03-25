@@ -31,7 +31,7 @@ public class SearchFournisseurController {
 
         String dest = "jdbc:mysql://localhost:3306/papyrus";
         try {
-            Connection con = DriverManager.getConnection(dest, "root", "Grm1");
+            Connection con = DriverManager.getConnection(dest, "root", "tiger");
             PreparedStatement stm = con.prepareStatement("SELECT * FROM fournis where numfou = ?");
             stm.setString(1,numField.getText());
 
