@@ -20,7 +20,7 @@ import static org.afpa.App.changeFxml;
 
 public class CommandeController implements Initializable {
     public TextArea affichageArea;
-    public ComboBox listeFouCombo;
+    public ComboBox<String> listeFouCombo;
     public Button boutonMenu;
     public Button menuButton;
 
