@@ -1,14 +1,14 @@
 package org.afpa.gui;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.afpa.DAL.Fournisseur;
+import org.afpa.DAL.FournisseurDAO;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
 
 import static org.afpa.App.changeFxml;
 
@@ -29,35 +29,30 @@ public class SearchFournisseurController {
 
     public void searchMethode(ActionEvent actionEvent) {
 
-        //String dest = "jdbc:mysql://localhost:3306/papyrus";
-       /* try {
-            Connection con = DriverManager.getConnection(dest, "root", "tiger");
-            PreparedStatement stm = con.prepareStatement("SELECT * FROM fournis where numfou = ?");
-            stm.setString(1,numField.getText());
-
-            ResultSet resultSet = stm.executeQuery();
-
-            if (resultSet.next()){
-                nomField.setText(resultSet.getString("nomfou"));
-                rueField.setText(resultSet.getString("ruefou"));
-                cpField.setText(resultSet.getString("posfou"));
-                villeField.setText(resultSet.getString("vilfou"));
-                contactField.setText(resultSet.getString("confou"));
+        
+        int numfou = Integer.parseInt(numField.getText());
+        try {
+            FournisseurDAO fournisseurDAO = new FournisseurDAO();
+            Fournisseur fournisseur = fournisseurDAO.find(numfou);
+            if(fournisseur !=null){
+                nomField.setText(fournisseur.getNomfou());
+                rueField.setText(fournisseur.getRuefou());
+                cpField.setText(fournisseur.getPosfou());
+                villeField.setText(fournisseur.getVilfou());
+                contactField.setText(fournisseur.getConfou());
                 avertissement.setText("");
             } else {
-                nomField.clear();
-                rueField.clear();
-                cpField.clear();
-                villeField.clear();
-                contactField.clear();
+                nomField.setText("");
+                rueField.setText("");
+                cpField.setText("");
+                villeField.setText("");
+                contactField.setText("");
                 avertissement.setText("pas de résultat");
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setContentText("la recherche n'à pas pu aboutir");
-            alert.showAndWait();
-        }*/
 
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
