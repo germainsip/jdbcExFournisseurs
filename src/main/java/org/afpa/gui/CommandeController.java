@@ -2,12 +2,12 @@ package org.afpa.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 import org.afpa.DAL.Commande;
 import org.afpa.DAL.CommandeDAO;
 import org.afpa.DAL.Fournisseur;
@@ -25,6 +25,8 @@ public class CommandeController implements Initializable {
     public TextArea affichageArea;
     public ComboBox<Fournisseur> listeFouCombo;
     public Button menuButton;
+    public ScrollPane scrollOne;
+    public VBox scroll;
 
     ObservableList<Fournisseur> listFournis = FXCollections.observableArrayList(new Fournisseur(0, "Tous"));
 
@@ -32,14 +34,14 @@ public class CommandeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             FournisseurDAO fournisseurDAO = new FournisseurDAO();
-            listFournis.addAll(fournisseurDAO.ListAll());
+            listFournis.addAll(fournisseurDAO.ListAllForBox());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             Alert alert = new Alert(AlertType.WARNING);
             alert.setContentText("La base de donnée n'est pas joignable.");
         }
-
         listeFouCombo.setItems(listFournis);
+
     }
 
     public void handleButtonMenu() throws IOException {
@@ -69,13 +71,19 @@ public class CommandeController implements Initializable {
         }
     }
 
-    private void afficheListe(List<Commande> list) {
+    private void afficheListe(List<Commande> list) throws IOException {
+        scroll.getChildren().clear();
         StringBuilder tmp = new StringBuilder();
         for (Commande commande : list) {
             tmp.append(commande.toString()).append("\n");
-            System.out.println();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("com.fxml"));
+            Parent comCard = fxmlLoader.load();
+            ComController controller = fxmlLoader.getController();
+            controller.setCom(commande);
+            scroll.getChildren().add(comCard);
         }
-        affichageArea.setText(tmp.toString());
+        System.out.println(tmp);
+        //affichageArea.setText(tmp.toString());
     }
 
 }

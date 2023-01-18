@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.CommandeController">
+<AnchorPane stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.CommandeController">
     <children>
       <VBox layoutX="80.0" layoutY="29.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -35,11 +35,17 @@
                   </ComboBox>
                </children>
             </HBox>
-              <TextArea fx:id="affichageArea" editable="false" style="-fx-: d38627;">
-                  <effect>
-                      <InnerShadow />
-                  </effect>
-              </TextArea>
+            <ScrollPane fx:id="scrollOne" hbarPolicy="NEVER" prefHeight="241.0" style="-fx-background-color: white;" vbarPolicy="NEVER">
+               <content>
+                  <VBox fx:id="scroll" alignment="CENTER" prefHeight="0.0" prefWidth="660.0" spacing="20.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></VBox>
+               </content>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </ScrollPane>
          </children>
          <padding>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

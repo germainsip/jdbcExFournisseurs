@@ -8,12 +8,18 @@ import javafx.scene.layout.AnchorPane;
 import org.afpa.App;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class MenuController {
     public Button commandeButton;
     public Button fournisButton;
     public AnchorPane menuPane;
     public Button fournisAddButton;
+
+    public void initialize(){
+
+    }
 
     public void handleButtonCommande(ActionEvent actionEvent) throws IOException {
         App.changeFxml("commandes");

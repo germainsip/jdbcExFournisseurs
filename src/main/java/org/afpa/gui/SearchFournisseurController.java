@@ -29,8 +29,8 @@ public class SearchFournisseurController {
 
     public void searchMethode(ActionEvent actionEvent) {
 
-        String dest = "jdbc:mysql://localhost:3306/papyrus";
-        try {
+        //String dest = "jdbc:mysql://localhost:3306/papyrus";
+       /* try {
             Connection con = DriverManager.getConnection(dest, "root", "tiger");
             PreparedStatement stm = con.prepareStatement("SELECT * FROM fournis where numfou = ?");
             stm.setString(1,numField.getText());
@@ -57,6 +57,7 @@ public class SearchFournisseurController {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setContentText("la recherche n'à pas pu aboutir");
             alert.showAndWait();
-        }
+        }*/
+
     }
 }

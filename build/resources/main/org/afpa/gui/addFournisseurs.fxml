@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.FournisseursController">
+<AnchorPane stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.FournisseursController">
     <children>
       <VBox layoutX="80.0" layoutY="29.0" prefHeight="366.0" prefWidth="498.5" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -59,8 +59,14 @@
               </VBox>
             <HBox alignment="CENTER" spacing="50.0">
                <children>
-                    <Button fx:id="ajouter" mnemonicParsing="false" onAction="#handleButtonAjouter" prefHeight="60.0" prefWidth="200.0" text="Ajouter" textFill="WHITE" />
-                    <Button fx:id="annuler" mnemonicParsing="false" onAction="#handleButtonAnnuler" prefHeight="60.0" prefWidth="200.0" text="Annuler" textFill="WHITE" />
+                    <Button fx:id="ajouter" mnemonicParsing="false" onAction="#handleButtonAjouter" prefHeight="60.0" prefWidth="200.0" text="Ajouter" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+                    <Button fx:id="annuler" mnemonicParsing="false" onAction="#handleButtonAnnuler" prefHeight="60.0" prefWidth="200.0" text="Annuler" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
                </children>
             </HBox>
          </children>

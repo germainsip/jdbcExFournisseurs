@@ -20,6 +20,38 @@ public class Commande {
     this.numfou = numfou;
   }
 
+  public long getNumcom() {
+    return numcom;
+  }
+
+  public void setNumcom(long numcom) {
+    this.numcom = numcom;
+  }
+
+  public String getObscom() {
+    return obscom;
+  }
+
+  public void setObscom(String obscom) {
+    this.obscom = obscom;
+  }
+
+  public String getDatcom() {
+    return datcom;
+  }
+
+  public void setDatcom(String datcom) {
+    this.datcom = datcom;
+  }
+
+  public long getNumfou() {
+    return numfou;
+  }
+
+  public void setNumfou(long numfou) {
+    this.numfou = numfou;
+  }
+
   @Override
   public String toString() {
     return
