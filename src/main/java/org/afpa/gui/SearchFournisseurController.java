@@ -29,7 +29,7 @@ public class SearchFournisseurController {
 
     public void searchMethode(ActionEvent actionEvent) {
 
-        
+
         int numfou = Integer.parseInt(numField.getText());
         try {
             FournisseurDAO fournisseurDAO = new FournisseurDAO();
